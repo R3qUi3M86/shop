@@ -1,15 +1,15 @@
 package com.codecool.codecoolshopspring.service;
 
-import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
-import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
+import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
+import com.codecool.codecoolshopspring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class ProductService{
     private ProductRepository productRepository;
     private ProductCategoryRepository productCategoryRepository;
