@@ -4,12 +4,13 @@ package com.codecool.codecoolshopspring.repository.implementation;
 import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
 import com.codecool.codecoolshopspring.model.ProductCategory;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Repository
 public class ProductCategoryRepositoryMem implements ProductCategoryRepository {
 
     private List<ProductCategory> data = new ArrayList<>();

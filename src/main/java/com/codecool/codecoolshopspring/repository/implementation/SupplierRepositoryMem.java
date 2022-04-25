@@ -3,12 +3,13 @@ package com.codecool.codecoolshopspring.repository.implementation;
 import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import com.codecool.codecoolshopspring.model.Supplier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Repository
 public class SupplierRepositoryMem implements SupplierRepository {
 
     private List<Supplier> data = new ArrayList<>();
