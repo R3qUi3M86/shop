@@ -1,5 +1,6 @@
 package com.codecool.codecoolshopspring.controller;
 
+import com.codecool.codecoolshopspring.model.pojo.ProductCategoryPOJO;
 import com.codecool.codecoolshopspring.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -32,6 +33,11 @@ public class ProductController {
         model.addAttribute("products", service.getProductsForCategory(1));
         model.addAttribute("allCategories", service.getAllProductCategories());
         return "product/index";
+    }
+
+    @PostMapping(value = "/", produces = "application/json")
+    public @ResponseBody ProductCategoryPOJO createPerson(@RequestBody ObjectNode json) {
+        return new ProductCategoryPOJO(service.getProductCategory(1));
     }
 
 //    @PostMapping("/")

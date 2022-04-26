@@ -6,18 +6,18 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/")
+//@RestController
+//@RequestMapping("/")
 public class ShopRestController {
-    private ProductService service;
-
-    @Autowired
-    public ShopRestController(ProductService service) {
-        this.service = service;
-    }
-
-    @PostMapping(value = "/", produces = "application/json")
-    public ProductCategoryPOJO createPerson(@RequestBody ObjectNode json) {
-        return new ProductCategoryPOJO(service.getProductCategory(1));
-    }
+//    private ProductService service;
+//
+//    @Autowired
+//    public ShopRestController(ProductService service) {
+//        this.service = service;
+//    }
+//
+//    @PostMapping(value = "/", produces = "application/json")
+//    public ProductCategoryPOJO createPerson(@RequestBody ObjectNode json) {
+//        return new ProductCategoryPOJO(service.getProductCategory(1));
+//    }
 }
