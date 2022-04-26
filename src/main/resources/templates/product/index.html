@@ -16,7 +16,7 @@
             crossorigin="anonymous"></script>
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css"/>
 </head>
 
 <body style="height: 100vh" class="d-flex justify-content-between flex-column">
@@ -25,8 +25,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col col-3">
-
+        <div class="col col-2">
+            <div th:replace="navbar.html :: copy"></div>
         </div>
         <div class="col col-9">
             <div class="card">
