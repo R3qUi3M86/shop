@@ -1,13 +1,11 @@
-package com.codecool.codecoolshopspring.model.pojo;
+package com.codecool.codecoolshopspring.model.dto;
 
 import com.codecool.codecoolshopspring.model.Product;
-import com.codecool.codecoolshopspring.model.ProductCategory;
-import com.codecool.codecoolshopspring.model.Supplier;
 
 import java.math.BigDecimal;
 import java.util.Currency;
 
-public class ProductPOJO {
+public class ProductDTO {
     protected int id;
     protected String name;
     protected String description;
@@ -16,7 +14,7 @@ public class ProductPOJO {
     private String productCategory;
     private String supplier;
 
-    public ProductPOJO(Product product){
+    public ProductDTO(Product product){
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();

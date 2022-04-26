@@ -1,4 +1,4 @@
-package com.codecool.codecoolshopspring.model.pojo;
+package com.codecool.codecoolshopspring.model.dto;
 
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
@@ -6,20 +6,20 @@ import com.codecool.codecoolshopspring.model.ProductCategory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductCategoryPOJO {
+public class ProductCategoryDTO {
     protected int id;
     protected String name;
     protected String description;
     private String department;
-    private List<ProductPOJO> products = new ArrayList<>();
+    private List<ProductDTO> products = new ArrayList<>();
 
-    public ProductCategoryPOJO(ProductCategory productCategory){
+    public ProductCategoryDTO(ProductCategory productCategory){
         this.id = productCategory.getId();
         this.name = productCategory.getName();
         this.description = productCategory.getDescription();
         this.department = productCategory.getDepartment();
         for(Product product : productCategory.getProducts()){
-            products.add(new ProductPOJO(product));
+            products.add(new ProductDTO(product));
         }
     }
 
@@ -39,7 +39,7 @@ public class ProductCategoryPOJO {
         return department;
     }
 
-    public List<ProductPOJO> getProducts() {
+    public List<ProductDTO> getProducts() {
         return products;
     }
 }
