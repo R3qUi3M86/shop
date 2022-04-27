@@ -1,5 +1,7 @@
 package com.codecool.codecoolshopspring.service;
 
+import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
+import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.model.Product;
@@ -7,6 +9,7 @@ import com.codecool.codecoolshopspring.model.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,6 +35,4 @@ public class ShopService {
     public List<ProductCategory> getAllProductCategories() {
         return productCategoryRepository.findAll();
     }
-
-
 }

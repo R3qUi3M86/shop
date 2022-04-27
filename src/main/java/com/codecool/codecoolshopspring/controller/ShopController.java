@@ -1,5 +1,6 @@
 package com.codecool.codecoolshopspring.controller;
 
+import com.codecool.codecoolshopspring.service.ShopDTOService;
 import com.codecool.codecoolshopspring.service.ShopService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ShopController {
-
-    private ShopService service;
-    private ObjectMapper mapper;
+    private final ShopService service;
 
     @Autowired
-    public ShopController(ShopService service, ObjectMapper mapper) {
+    public ShopController(ShopService service) {
         this.service = service;
-        this.mapper = mapper;
     }
 
     @GetMapping("/")

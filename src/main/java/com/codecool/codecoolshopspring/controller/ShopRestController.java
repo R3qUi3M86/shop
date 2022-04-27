@@ -1,25 +1,38 @@
 package com.codecool.codecoolshopspring.controller;
 
+import com.codecool.codecoolshopspring.model.ProductCategory;
 import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
+import com.codecool.codecoolshopspring.model.dto.ProductDTO;
+import com.codecool.codecoolshopspring.service.ShopDTOService;
 import com.codecool.codecoolshopspring.service.ShopService;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController // - using this makes controler not require @ResponseBody annotation in each function that returns JSON
 public class ShopRestController {
-    private ShopService service;
+    private final ShopService service;
+    private final ShopDTOService serviceDTO;
 
     @Autowired
-    public ShopRestController(ShopService service) {
+    public ShopRestController(ShopService service, ShopDTOService serviceDTO) {
         this.service = service;
+        this.serviceDTO = serviceDTO;
     }
 
-    @PostMapping(value = "/", produces = "application/json")
-    public @ResponseBody ProductCategoryDTO createPerson(@RequestBody ObjectNode json) {
-        return new ProductCategoryDTO(service.getProductCategory(1));
+    @GetMapping("/display-products/{categoryId}")
+    public List<ProductDTO> getProductsByCategory(@PathVariable String categoryId) {
+        return serviceDTO.getProductsDTOForCategory(Integer.parseInt(categoryId));
     }
+
+    @GetMapping("/get-categories")
+    public List<ProductCategoryDTO> getAllCategoryNames() {
+        return serviceDTO.getAllProductCategoriesDTO();
+    }
+
+//    @PostMapping(value = "/", produces = "application/json")
+//    public @ResponseBody ProductCategoryDTO createPerson(@RequestBody ObjectNode json) {
+//        return new ProductCategoryDTO(service.getProductCategory(1));
+//    }
 }

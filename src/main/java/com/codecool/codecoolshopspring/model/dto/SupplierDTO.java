@@ -10,15 +10,11 @@ public class SupplierDTO {
     protected int id;
     protected String name;
     protected String description;
-    private List<ProductDTO> products = new ArrayList<>();
 
     public SupplierDTO(Supplier supplier){
         this.id = supplier.getId();
         this.name = supplier.getName();
         this.description = supplier.getDescription();
-        for(Product product : supplier.getProducts()){
-            products.add(new ProductDTO(product));
-        }
     }
 
     public int getId() {
@@ -31,9 +27,5 @@ public class SupplierDTO {
 
     public String getDescription() {
         return description;
-    }
-
-    public List<ProductDTO> getProducts() {
-        return products;
     }
 }
