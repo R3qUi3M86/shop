@@ -1,9 +1,24 @@
+
+
+
 export let dataHandler = {
     getBoards: async function (payload) {
         const response = await apiPost("/", payload);
         return response;
-    }
+    },
+
+    getProductsByCategory: async function (categoryId) {
+        console.log(categoryId)
+        const response = await apiGet(`/api/${categoryId}`);
+        return response;
+    },
 };
+
+let filterBtn = document.getElementById("filterBtn")
+let categorySelect = document.getElementById("category-select")
+
+filterBtn.onclick = function(){dataHandler.getProductsByCategory(categorySelect.value)}
+
 
 async function apiGet(url) {
     let response = await fetch(url, {
@@ -55,5 +70,5 @@ function logResponseStatus(response){
     }
 }
 
-console.log(await dataHandler.getBoards({asd: ["dupa", "dupa2"]}))
+// console.log(await dataHandler.getBoards({asd: ["dupa", "dupa2"]}))
 

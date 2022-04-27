@@ -35,10 +35,17 @@ public class ProductController {
         return "product/index";
     }
 
-    @PostMapping(value = "/", produces = "application/json")
-    public @ResponseBody ProductCategoryPOJO createPerson(@RequestBody ObjectNode json) {
-        return new ProductCategoryPOJO(service.getProductCategory(1));
+//    @PostMapping(value = "/", produces = "application/json")
+//    public @ResponseBody ProductCategoryPOJO createPerson(@RequestBody ObjectNode json) {
+//        return new ProductCategoryPOJO(service.getProductCategory(1));
+//    }
+
+    @GetMapping("/api/{categoryId}")
+    public @ResponseBody ProductCategoryPOJO getProductsByCategory(@PathVariable String categoryId) {
+        return new ProductCategoryPOJO(service.getProductCategory(Integer.parseInt(categoryId)));
     }
+
+
 
 //    @PostMapping("/")
 //    public String filterByCategory(RedirectAttributes redirectAttributes, HttpServletRequest request) {
