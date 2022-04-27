@@ -1,6 +1,6 @@
 package com.codecool.codecoolshopspring.controller;
 
-//@RestController
+//@RestController - using this makes controler not require @ResponseBody annotation in each function that returns JSON
 //@RequestMapping("/")
 public class ShopRestController {
 //    private ProductService service;
