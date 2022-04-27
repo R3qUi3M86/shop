@@ -26,30 +26,17 @@ function displayProducts(value) {
     for (const element of value) {
         let newProductCard = document.createElement("div")
         productsContainer.appendChild(newProductCard)
-        newProductCard.setAttribute("class", "card")
         let cardHeader = document.createElement("div")
         newProductCard.appendChild(cardHeader)
-        cardHeader.setAttribute("class", "card-header")
         let cardTitle = document.createElement("h4")
         cardHeader.appendChild(cardTitle)
         cardTitle.innerText = element["name"]
-        let cardText1 = document.createElement("p")
-        cardHeader.appendChild(cardText1)
-        cardText1.innerText = element["description"]
-        let cardBody = document.createElement("div")
+        let cardDescription = document.createElement("p")
+        cardHeader.appendChild(cardDescription)
+        cardDescription.innerText = element["description"]
+        let cardBody = document.createElement("p")
         newProductCard.appendChild(cardBody)
-        cardBody.setAttribute("class", "card-body")
-        let cardText2 = document.createElement("p")
-        cardBody.appendChild(cardText2)
-        cardText2.setAttribute("class", "lead")
-        cardText2.innerText = element["defaultPrice"] + " " + element["defaultCurrency"]
-        let cardText = document.createElement("div")
-        newProductCard.appendChild(cardText)
-        cardText.setAttribute("class", "card-text")
-        let addToCartButton = document.createElement("button")
-        addToCartButton.appendChild(cardText)
-        addToCartButton.setAttribute("class", "btn btn-primary")
-        addToCartButton.innerText = "Add to cart"
+        cardBody.innerText = element["defaultPrice"] + " " + element["defaultCurrency"]
 
         console.log(element)
     }
