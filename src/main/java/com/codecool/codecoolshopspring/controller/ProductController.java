@@ -1,9 +1,8 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
-import com.codecool.codecoolshopspring.model.pojo.ProductCategoryPOJO;
-import com.codecool.codecoolshopspring.model.pojo.ProductPOJO;
+import com.codecool.codecoolshopspring.model.pojo.ProductCategoryDTO;
+import com.codecool.codecoolshopspring.model.pojo.ProductDTO;
 import com.codecool.codecoolshopspring.service.ProductService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,13 +26,13 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    @JsonProperty("")
     public String index(Model model) {
         model.addAttribute("category", service.getProductCategory(1));
         model.addAttribute("products", service.getProductsForCategory(1));
         model.addAttribute("allCategories", service.getAllProductCategories());
         return "product/index";
     }
+    //
 
 //    @PostMapping(value = "/", produces = "application/json")
 //    public @ResponseBody ProductCategoryPOJO createPerson(@RequestBody ObjectNode json) {
@@ -42,10 +40,11 @@ public class ProductController {
 //    }
 
     @GetMapping("/display-products/{categoryId}")
-    public @ResponseBody List<ProductPOJO> getProductsByCategory(@PathVariable String categoryId) {
+    public @ResponseBody List<ProductDTO> getProductsByCategory(@PathVariable String categoryId) {
         ProductCategory productCategory = service.getProductCategory(Integer.parseInt(categoryId));
-        return new ProductCategoryPOJO(productCategory).getProducts();
+        return new ProductCategoryDTO(productCategory).getProducts();
     }
+    //rest
 
 //
 

@@ -24,8 +24,13 @@ function displayProducts(value) {
     let productsContainer = document.getElementById("products")
     productsContainer.innerHTML = ""
     for (const element of value) {
+        let bDiv = document.createElement("div")
+        bDiv.setAttribute("class", "col col-sm-12 col-md-6 col-lg-4")
+        productsContainer.appendChild(bDiv)
+
         let newProductCard = document.createElement("div")
-        productsContainer.appendChild(newProductCard)
+        bDiv.appendChild(newProductCard)
+        newProductCard.setAttribute("class", "card")
         let cardHeader = document.createElement("div")
         newProductCard.appendChild(cardHeader)
         let cardTitle = document.createElement("h4")
@@ -37,6 +42,7 @@ function displayProducts(value) {
         let cardBody = document.createElement("p")
         newProductCard.appendChild(cardBody)
         cardBody.innerText = element["defaultPrice"] + " " + element["defaultCurrency"]
+
 
         console.log(element)
     }
