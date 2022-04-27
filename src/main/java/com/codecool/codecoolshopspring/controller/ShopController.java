@@ -1,22 +1,20 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
-import com.codecool.codecoolshopspring.service.ProductService;
+import com.codecool.codecoolshopspring.service.ShopService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class ProductController {
+public class ShopController {
 
-    private ProductService service;
+    private ShopService service;
     private ObjectMapper mapper;
 
     @Autowired
-    public ProductController(ProductService service, ObjectMapper mapper) {
+    public ShopController(ShopService service, ObjectMapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }
@@ -26,13 +24,10 @@ public class ProductController {
         model.addAttribute("category", service.getProductCategory(1));
         model.addAttribute("products", service.getProductsForCategory(1));
         model.addAttribute("allCategories", service.getAllProductCategories());
-        return "product/index";
+        return "shop/index";
     }
 
-    @PostMapping(value = "/", produces = "application/json")
-    public @ResponseBody ProductCategoryDTO createPerson(@RequestBody ObjectNode json) {
-        return new ProductCategoryDTO(service.getProductCategory(1));
-    }
+
 
 //    @PostMapping("/")
 //    public String filterByCategory(RedirectAttributes redirectAttributes, HttpServletRequest request) {
