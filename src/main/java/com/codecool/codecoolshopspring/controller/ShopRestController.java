@@ -1,6 +1,5 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.model.ProductCategory;
 import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import com.codecool.codecoolshopspring.service.ShopDTOService;
@@ -21,18 +20,13 @@ public class ShopRestController {
         this.serviceDTO = serviceDTO;
     }
 
-    @GetMapping("/display-products/{categoryId}")
-    public List<ProductDTO> getProductsByCategory(@PathVariable String categoryId) {
-        return serviceDTO.getProductsDTOForCategory(Integer.parseInt(categoryId));
+    @PostMapping("/display-products")
+    public List<ProductDTO> getProductsByCategory(@RequestBody int categoryId) {
+        return serviceDTO.getProductsDTOForCategory(categoryId);
     }
 
     @GetMapping("/get-categories")
     public List<ProductCategoryDTO> getAllCategoryNames() {
         return serviceDTO.getAllProductCategoriesDTO();
     }
-
-//    @PostMapping(value = "/", produces = "application/json")
-//    public @ResponseBody ProductCategoryDTO createPerson(@RequestBody ObjectNode json) {
-//        return new ProductCategoryDTO(service.getProductCategory(1));
-//    }
 }

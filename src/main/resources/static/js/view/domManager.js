@@ -1,3 +1,6 @@
+import {cardBuilder} from "../model/builders/cardBuilder.js";
+import {cardTypes} from "../model/builders/cardBuilder.js";
+
 export const domManager = {
     addChild(parentId, child){
         const parent = document.getElementById(parentId);
@@ -13,6 +16,18 @@ export const domManager = {
         const categoryElemArray = Array.from(categoryBtnsParent.children);
         categoryElemArray.forEach((e) => {
             e.classList.remove("active");
+        })
+    },
+
+    clearProductsContainer() {
+        const productsContainer = document.getElementById("products");
+        productsContainer.innerHTML = "";
+    },
+
+    displayProducts(products) {
+        const productsArray = Array.from(products);
+        productsArray.forEach((e) => {
+            domManager.addChild("products", cardBuilder(cardTypes.productCard, e))
         })
     }
 }

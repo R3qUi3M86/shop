@@ -14,7 +14,8 @@ export const btnActionController = {
 async function selectCategoryEvtHandler(e){
     const target = e.currentTarget;
     const products = await dataHandler.getProductsByCategory(target.dataset.categoryId);
-    console.log(products);
     domManager.deactivateAllCategories();
     target.classList.add("active");
+    domManager.clearProductsContainer();
+    domManager.displayProducts(products);
 }

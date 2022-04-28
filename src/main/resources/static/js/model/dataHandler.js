@@ -1,12 +1,10 @@
 export const dataHandler = {
     getProductsByCategory: async function (categoryId) {
-        const response = await apiGet(`/display-products/${categoryId}`);
-        return response;
+        return await apiPost("/display-products", categoryId);
     },
 
     getAllCategoryNames: async function (){
-        const response = await apiGet("/get-categories");
-        return response;
+        return await apiGet("/get-categories");
     }
 };
 

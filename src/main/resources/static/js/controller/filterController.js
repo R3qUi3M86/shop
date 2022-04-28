@@ -8,10 +8,10 @@ import {btnActionController} from "./btnActionController.js";
 export const filterController = {
     async initCategoryFilter(){
         const categoryArr = await dataHandler.getAllCategoryNames();
-        console.log(categoryArr);
+
         const listBuilder = htmlFactory(htmlTemplates.list);
         const categoryContainer = listBuilder(listTypes.categoryList, categoryArr);
-        console.log(categoryContainer);
+
         domManager.addChild("catContainer", categoryContainer);
         btnActionController.setCategoryButtonsEvtHandlers();
     },
