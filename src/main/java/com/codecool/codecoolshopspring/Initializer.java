@@ -53,7 +53,5 @@ public class Initializer {
         productRepository.save(new Product("MAC 11 Pro", new BigDecimal("0.1"), "USD", "Im cheap", laptops, apple));
         productRepository.save(new Product("DUPA", new BigDecimal("999"), "USD", "Js sucks", laptops, apple));
         productRepository.save(new Product("Pozdro600", new BigDecimal("111"), "USD", "wowr", laptops, apple));
-
-
     }
 }
