@@ -17,9 +17,7 @@ public class ShopController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("category", service.getProductCategory(1));
-        model.addAttribute("products", service.getProductsForCategory(1));
-        model.addAttribute("allCategories", service.getAllProductCategories());
+        model.addAttribute("products", service.getAllProducts());
         return "shop/index";
     }
 }
