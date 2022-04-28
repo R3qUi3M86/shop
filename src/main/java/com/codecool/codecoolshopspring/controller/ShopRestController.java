@@ -29,4 +29,9 @@ public class ShopRestController {
     public List<ProductCategoryDTO> getAllCategoryNames() {
         return serviceDTO.getAllProductCategoriesDTO();
     }
+
+    @GetMapping("/product/findAll")
+    public List<ProductDTO> getAllProductDTO() {
+        return serviceDTO.getAllProductsDTO();
+    }
 }

@@ -5,7 +5,10 @@ export const dataHandler = {
 
     getAllCategoryNames: async function (){
         return await apiGet("/category/findAll");
-    }
+    },
+    getAllProducts: async function (){
+        return await apiGet("/product/findAll");
+    },
 };
 
 async function apiGet(url) {

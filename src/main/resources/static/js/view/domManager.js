@@ -1,5 +1,5 @@
-import {cardBuilder} from "../model/builders/cardBuilder.js";
 import {cardTypes} from "../model/builders/cardBuilder.js";
+import {htmlFactory, htmlTemplates} from "../model/htmlFactory.js";
 
 export const domManager = {
     addChild(parentId, child){
@@ -26,8 +26,9 @@ export const domManager = {
 
     displayProducts(products) {
         const productsArray = Array.from(products);
+        const cardBuilder = htmlFactory(htmlTemplates.card);
         productsArray.forEach((e) => {
-            domManager.addChild("products", cardBuilder(cardTypes.productCard, e))
+            domManager.addChild("products", cardBuilder(cardTypes.productCard, e));
         })
     }
 }

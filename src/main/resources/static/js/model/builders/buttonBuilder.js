@@ -13,9 +13,7 @@ export function buttonBuilder(buttonType, content) {
             return button;
         case (buttonTypes.productBtn):
             button.classList.add("btn", "btn-primary");
-            console.log(content)
-            button.setAttribute("product-id", content);
-            button.setAttribute("add-to-cart-btn", content);
+            button.setAttribute("dataset-product-id", content);
             button.innerText = "Add to cart"
             return button;
     }

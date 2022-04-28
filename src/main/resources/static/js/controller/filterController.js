@@ -15,4 +15,12 @@ export const filterController = {
         domManager.addChild("catContainer", categoryContainer);
         btnActionController.setCategoryButtonsEvtHandlers();
     },
+    async initAllProducts() {
+        console.log("jestem");
+        const products = await dataHandler.getAllProducts();
+
+
+        domManager.clearProductsContainer();
+        domManager.displayProducts(products);
+    }
 }

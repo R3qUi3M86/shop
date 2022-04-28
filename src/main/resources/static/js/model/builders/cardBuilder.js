@@ -14,10 +14,11 @@ export function cardBuilder(type, product){
 
 function buildProductCardContainer(product) {
     const productCardContainer = document.createElement("div");
-    productCardContainer.classList.add("col", "col-sm-12", "col-md-6", "col-lg-4");
+    productCardContainer.classList.add("col", "col-sm-12", "col-md-6", "col-lg-4", "mb-1");
 
     const productCard = document.createElement("div");
     productCard.classList.add("card");
+    productCard.setAttribute("style", "height:100%");
 
     const productImg = document.createElement("img");
     productImg.setAttribute("class", "");
@@ -26,6 +27,7 @@ function buildProductCardContainer(product) {
 
     const cardHeader = document.createElement("div");
     cardHeader.classList.add("card-header");
+    cardHeader.setAttribute("style", "height:100%");
 
     const productTitle = document.createElement("h4");
     productTitle.classList.add("card-title");
