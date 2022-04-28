@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController // - using this makes controler not require @ResponseBody annotation in each function that returns JSON
 public class ShopRestController {
@@ -33,5 +34,12 @@ public class ShopRestController {
     @GetMapping("/product/findAll")
     public List<ProductDTO> getAllProductDTO() {
         return serviceDTO.getAllProductsDTO();
+    }
+
+    @PostMapping("/cart/addProduct")
+    public Map<ProductDTO, Integer> addProductToCart(@RequestBody Map<String, Object> payload){
+        String userName = (String) payload.get("userName");
+        Integer prodId = (Integer) payload.get("productId");
+        return service.addProductToOrder(userName, prodId);
     }
 }
