@@ -20,12 +20,12 @@ public class ShopRestController {
         this.serviceDTO = serviceDTO;
     }
 
-    @PostMapping("/display-products")
+    @PostMapping("/product/findByCategory")
     public List<ProductDTO> getProductsByCategory(@RequestBody int categoryId) {
         return serviceDTO.getProductsDTOForCategory(categoryId);
     }
 
-    @GetMapping("/get-categories")
+    @GetMapping("/category/findAll")
     public List<ProductCategoryDTO> getAllCategoryNames() {
         return serviceDTO.getAllProductCategoriesDTO();
     }

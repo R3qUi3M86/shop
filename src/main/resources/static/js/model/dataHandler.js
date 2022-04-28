@@ -1,10 +1,10 @@
 export const dataHandler = {
     getProductsByCategory: async function (categoryId) {
-        return await apiPost("/display-products", categoryId);
+        return await apiPost("/product/findByCategory", categoryId);
     },
 
     getAllCategoryNames: async function (){
-        return await apiGet("/get-categories");
+        return await apiGet("/category/findAll");
     }
 };
 
