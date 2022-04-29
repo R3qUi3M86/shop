@@ -30,7 +30,6 @@ async function selectSupplierEvtHandler(e) {
     if (domManager.categoryFilterIsActive()) {
         const categoryButton = domManager.getActiveCategoryButton();
         products = await dataHandler.getProductsByCustomFilter(target.dataset.supplierId, categoryButton.dataset.categoryId)
-        console.log(products);
     } else {
         products = await dataHandler.getProductsBySupplier(target.dataset.supplierId);
     }
@@ -38,6 +37,7 @@ async function selectSupplierEvtHandler(e) {
     target.classList.add("active");
     domManager.clearProductsContainer();
     domManager.displayProducts(products);
+
     btnActionController.setSupplierButtonsEvtHandlers();
     btnActionController.setProductBuyEvtHandlers();
 }
@@ -47,8 +47,7 @@ async function selectCategoryEvtHandler(e) {
     let products;
     if (domManager.supplierFilterIsActive()) {
         const supplierButton = domManager.getActiveSupplierButton();
-        products = await dataHandler.getProductsByCustomFilter(target.dataset.categoryId, supplierButton.dataset.supplierId)
-        console.log(products);
+        products = await dataHandler.getProductsByCustomFilter(supplierButton.dataset.supplierId, target.dataset.categoryId)
     } else {
         products = await dataHandler.getProductsByCategory(target.dataset.categoryId);
     }

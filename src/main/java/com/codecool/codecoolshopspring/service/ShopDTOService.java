@@ -58,8 +58,11 @@ public class ShopDTOService {
 
     public List<ProductDTO> getProductsDTOForFilter(int supplierId, int categoryId) {
         List<Product> products = shopService.getAllProducts();
+        System.out.println(products);
         ProductCategory productCategory = shopService.getProductCategory(categoryId);
+        System.out.println(productCategory);
         Supplier supplier = shopService.getSupplier(supplierId);
+        System.out.println(supplier);
         List<ProductDTO> prodDTOs = new ArrayList<>();
         products.stream()
                 .filter(e -> e.getSupplier().equals(supplier) && e.getProductCategory().equals(productCategory))
