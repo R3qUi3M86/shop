@@ -16,7 +16,7 @@ public class OrderRepositoryMem implements OrderRepository {
 
     @Override
     public void save(Order order) {
-
+        orders.add(order);
     }
 
     @Override

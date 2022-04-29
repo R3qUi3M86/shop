@@ -57,14 +57,14 @@ public class ShopService {
         orderRepository.save(order);
     }
 
-    public Map<ProductDTO, Integer> addProductToOrder(String userName, Integer productId) {
+    public Map<String, Integer> addProductToOrder(String userName, Integer productId) {
         Optional<Product> optProduct = getProductById(productId);
-        Map<ProductDTO, Integer> response = new HashMap<>();
+        Map<String, Integer> response = new HashMap<>();
         optProduct.ifPresent(product -> setOrder(product, userName, response));
         return response;
     }
 
-    private void setOrder(Product product, String userName, Map<ProductDTO, Integer> response){
+    private void setOrder(Product product, String userName, Map<String, Integer> response){
         Optional<Order> optOrder = getUserOrder(userName);
         Order order;
         if (optOrder.isEmpty()){
@@ -74,6 +74,6 @@ public class ShopService {
             order = optOrder.get();
         }
         order.addToOrder(product);
-        response.put(new ProductDTO(product), order.getProducts().get(product));
+        response.put("productsCount", order.countProducts());
     }
 }

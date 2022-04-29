@@ -8,6 +8,11 @@ export const btnActionController = {
         categoryElemArray.forEach((e) => {
             e.addEventListener("click", selectCategoryEvtHandler);
         })
+    },
+
+    setProductBuyEvtHandlers() {
+        const buyButtons = Array.from(document.querySelectorAll(".buy-btn"));
+        buyButtons.forEach(btn => btn.addEventListener("click", addProductToCartEvtHandler));
     }
 }
 
@@ -18,4 +23,11 @@ async function selectCategoryEvtHandler(e){
     target.classList.add("active");
     domManager.clearProductsContainer();
     domManager.displayProducts(products);
+}
+
+async function addProductToCartEvtHandler(e){
+    const target = e.currentTarget;
+    const prodId = target.dataset.productId;
+    const response = await dataHandler.addProductToCart({"userName": "stiepan", "productId": prodId});
+    //TODO implement cart icon update;
 }

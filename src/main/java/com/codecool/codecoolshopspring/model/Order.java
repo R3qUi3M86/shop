@@ -27,4 +27,12 @@ public class Order extends BaseModel{
     public Map<Product, Integer> getProducts() {
         return orderedProducts;
     }
+
+    public Integer countProducts(){
+        int count = 0;
+        for (Product product : orderedProducts.keySet()){
+            count += orderedProducts.get(product);
+        }
+        return count;
+    }
 }

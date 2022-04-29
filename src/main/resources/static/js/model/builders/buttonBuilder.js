@@ -12,8 +12,8 @@ export function buttonBuilder(buttonType, content) {
             button.classList.add("list-group-item", "list-group-item-action");
             return button;
         case (buttonTypes.productBtn):
-            button.classList.add("btn", "btn-primary");
-            button.setAttribute("dataset-product-id", content);
+            button.classList.add("btn", "btn-primary", "buy-btn");
+            button.setAttribute("data-product-id", content);
             button.innerText = "Add to cart"
             return button;
     }

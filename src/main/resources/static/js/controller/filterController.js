@@ -8,19 +8,16 @@ import {btnActionController} from "./btnActionController.js";
 export const filterController = {
     async initCategoryFilter(){
         const categoryArr = await dataHandler.getAllCategoryNames();
-
         const listBuilder = htmlFactory(htmlTemplates.list);
         const categoryContainer = listBuilder(listTypes.categoryList, categoryArr);
-
         domManager.addChild("catContainer", categoryContainer);
         btnActionController.setCategoryButtonsEvtHandlers();
     },
+
     async initAllProducts() {
-        console.log("jestem");
         const products = await dataHandler.getAllProducts();
-
-
         domManager.clearProductsContainer();
         domManager.displayProducts(products);
+        btnActionController.setProductBuyEvtHandlers();
     }
 }

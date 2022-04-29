@@ -37,9 +37,9 @@ public class ShopRestController {
     }
 
     @PostMapping("/cart/addProduct")
-    public Map<ProductDTO, Integer> addProductToCart(@RequestBody Map<String, Object> payload){
+    public Map<String, Integer> addProductToCart(@RequestBody Map<String, Object> payload){
         String userName = (String) payload.get("userName");
-        Integer prodId = (Integer) payload.get("productId");
+        Integer prodId = Integer.parseInt((String) payload.get("productId"));
         return service.addProductToOrder(userName, prodId);
     }
 }

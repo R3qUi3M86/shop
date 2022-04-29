@@ -6,9 +6,14 @@ export const dataHandler = {
     getAllCategoryNames: async function (){
         return await apiGet("/category/findAll");
     },
+
     getAllProducts: async function (){
         return await apiGet("/product/findAll");
     },
+
+    addProductToCart: async function (payload){
+        return await apiPost("/cart/addProduct", payload);
+    }
 };
 
 async function apiGet(url) {
