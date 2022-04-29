@@ -27,11 +27,19 @@ export const btnActionController = {
 async function selectSupplierEvtHandler(e) {
     const target = e.currentTarget;
     let products;
-    if (domManager.categoryFilterIsActive()) {
-        const categoryButton = domManager.getActiveCategoryButton();
-        products = await dataHandler.getProductsByCustomFilter(target.dataset.supplierId, categoryButton.dataset.categoryId)
+    if (target.dataset.supplierId == 0) {
+        if (domManager.getActiveCategoryButton().dataset.categoryId > 0) {
+            products = await dataHandler.getProductsByCategory(domManager.getActiveCategoryButton().dataset.categoryId);
+        } else {
+            products = await dataHandler.getAllProducts();
+        }
     } else {
-        products = await dataHandler.getProductsBySupplier(target.dataset.supplierId);
+        if (domManager.categoryFilterIsActive() && domManager.getActiveCategoryButton().dataset.categoryId > 0) {
+            const categoryButton = domManager.getActiveCategoryButton();
+            products = await dataHandler.getProductsByCustomFilter(target.dataset.supplierId, categoryButton.dataset.categoryId)
+        } else {
+            products = await dataHandler.getProductsBySupplier(target.dataset.supplierId);
+        }
     }
     domManager.deactivateAllSuppliers();
     target.classList.add("active");
@@ -45,11 +53,20 @@ async function selectSupplierEvtHandler(e) {
 async function selectCategoryEvtHandler(e) {
     const target = e.currentTarget;
     let products;
-    if (domManager.supplierFilterIsActive()) {
-        const supplierButton = domManager.getActiveSupplierButton();
-        products = await dataHandler.getProductsByCustomFilter(supplierButton.dataset.supplierId, target.dataset.categoryId)
+    if (target.dataset.categoryId == 0) {
+        if (domManager.getActiveSupplierButton().dataset.supplierId > 0) {
+            products = await dataHandler.getProductsBySupplier(domManager.getActiveSupplierButton().dataset.supplierId);
+        } else {
+            products = await dataHandler.getAllProducts();
+        }
     } else {
-        products = await dataHandler.getProductsByCategory(target.dataset.categoryId);
+        if (domManager.supplierFilterIsActive() && domManager.getActiveSupplierButton().dataset.supplierId > 0) {
+            const supplierButton = domManager.getActiveSupplierButton();
+            products = await dataHandler.getProductsByCustomFilter(supplierButton.dataset.supplierId, target.dataset.categoryId)
+        } else {
+            products = await dataHandler.getProductsByCategory(target.dataset.categoryId);
+        }
+
     }
     domManager.deactivateAllCategories();
     target.classList.add("active");
@@ -58,6 +75,7 @@ async function selectCategoryEvtHandler(e) {
 
     btnActionController.setSupplierButtonsEvtHandlers();
     btnActionController.setProductBuyEvtHandlers();
+
 }
 
 async function addProductToCartEvtHandler(e) {

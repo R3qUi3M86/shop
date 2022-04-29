@@ -49,10 +49,10 @@ public class Initializer {
 
         productRepository.save(new Product("Iphone 11", new BigDecimal("50.1"), "USD", "Cool Phone", smartphones, apple));
         productRepository.save(new Product("Iphone 11 Pro", new BigDecimal("455.1"), "USD", "Even Better", smartphones, apple));
-        productRepository.save(new Product("Amazon Phone", new BigDecimal("456.1"), "USD", "Even Better", smartphones, amazon));
 
         productRepository.save(new Product("MAC 11 Pro", new BigDecimal("0.1"), "USD", "Im cheap", laptops, apple));
         productRepository.save(new Product("DUPA", new BigDecimal("999"), "USD", "Js sucks", laptops, lenovo));
         productRepository.save(new Product("Pozdro600", new BigDecimal("111"), "USD", "wowr", laptops, amazon));
+        productRepository.save(new Product("Amazon Phone", new BigDecimal("456.1"), "USD", "Even Better", smartphones, amazon));
     }
 }
