@@ -12,9 +12,6 @@ public class OrderDTO {
 
     public OrderDTO(Order order){
         this.orderStatus = order.getStatus();
-        order.getProducts().forEach((key, quantity) -> {
-            ProductDTO productDTO = new ProductDTO(key);
-            orderedProducts.put(productDTO, quantity);
-        });
+        order.getProducts().forEach((key, quantity) -> orderedProducts.put(new ProductDTO(key), quantity));
     }
 }
