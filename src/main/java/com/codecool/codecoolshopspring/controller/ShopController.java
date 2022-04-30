@@ -21,8 +21,8 @@ public class ShopController {
         return "Shop/index";
     }
 
-    @GetMapping("/shipping")
-    public String orderConfirmation() {
-        return "Shipping/shipping";
+    @GetMapping("/checkout")
+    public String checkout() {
+        return "Checkout/index";
     }
 }
