@@ -29,5 +29,7 @@ async function addProductToCartEvtHandler(e){
     const target = e.currentTarget;
     const prodId = target.dataset.productId;
     const response = await dataHandler.addProductToCart({"userName": "stiepan", "productId": prodId});
-    //TODO implement cart icon update;
+    const cartQty = document.getElementById("cart-item-qty");
+    cartQty.innerText = response["productsCount"];
+    cartQty.classList.remove("visually-hidden")
 }
