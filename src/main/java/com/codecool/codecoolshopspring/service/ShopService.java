@@ -1,6 +1,7 @@
 package com.codecool.codecoolshopspring.service;
 
 import com.codecool.codecoolshopspring.model.Order;
+import com.codecool.codecoolshopspring.model.Supplier;
 import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import com.codecool.codecoolshopspring.repository.OrderRepository;
@@ -8,6 +9,7 @@ import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
+import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +17,28 @@ import java.util.*;
 
 @Service
 public class ShopService {
-    private ProductRepository productRepository;
-    private ProductCategoryRepository productCategoryRepository;
-    private OrderRepository orderRepository;
+    private final ProductRepository productRepository;
+    private final ProductCategoryRepository productCategoryRepository;
+    private final OrderRepository orderRepository;
+
+    private final SupplierRepository supplierRepository;
 
     @Autowired
     public ShopService(ProductRepository productRepository,
                        ProductCategoryRepository productCategoryRepository,
-                       OrderRepository orderRepository) {
+                       OrderRepository orderRepository, SupplierRepository supplierRepository) {
         this.productRepository = productRepository;
         this.productCategoryRepository = productCategoryRepository;
         this.orderRepository = orderRepository;
+        this.supplierRepository = supplierRepository;
     }
 
     public ProductCategory getProductCategory(int categoryId){
         return productCategoryRepository.find(categoryId).orElseThrow();
+    }
+
+    public Supplier getSupplier(int supplierId){
+        return supplierRepository.findById(supplierId).orElseThrow();
     }
 
     public List<Product> getProductsForCategory(int categoryId){
@@ -75,5 +84,14 @@ public class ShopService {
         }
         order.addToOrder(product);
         response.put("productsCount", order.countProducts());
+    }
+
+    public List<Product> getProductsForSupplier(int supplierId) {
+        Supplier supplier = supplierRepository.findById(supplierId).orElseThrow();
+        return productRepository.findAllBySupplier(supplier);
+    }
+
+    public List<Supplier> getAllSuppliers() {
+        return supplierRepository.findAll();
     }
 }

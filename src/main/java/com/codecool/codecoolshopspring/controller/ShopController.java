@@ -18,6 +18,11 @@ public class ShopController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("products", service.getAllProducts());
-        return "shop/index";
+        return "Shop/index";
+    }
+
+    @GetMapping("/checkout")
+    public String checkout() {
+        return "Checkout/index";
     }
 }

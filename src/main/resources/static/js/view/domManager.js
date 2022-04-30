@@ -30,5 +30,60 @@ export const domManager = {
         productsArray.forEach((e) => {
             domManager.addChild("products", cardBuilder(cardTypes.productCard, e));
         })
+    },
+    deactivateAllSuppliers() {
+        const supplierBtnsParent = document.getElementById("supplierListContainer");
+        const supplierElemArray = Array.from(supplierBtnsParent.children);
+        supplierElemArray.forEach((e) => {
+            e.classList.remove("active");
+        })
+    },
+
+
+    categoryFilterIsActive() {
+        const categoryBtnsParent = document.getElementById("categoryListContainer");
+        const categoryElemArray = Array.from(categoryBtnsParent.children);
+        let result = false;
+        categoryElemArray.forEach((e) => {
+            if(e.classList.contains("active")){
+                result = true;
+            }
+        })
+        return result;
+    },
+
+    supplierFilterIsActive() {
+        const supplierBtnsParent = document.getElementById("supplierListContainer");
+        const supplierElemArray = Array.from(supplierBtnsParent.children);
+        let result = false;
+        supplierElemArray.forEach((e) => {
+            if(e.classList.contains("active")){
+                result = true;
+            }
+        })
+        return result;
+    },
+
+    getActiveCategoryButton() {
+        const categoryBtnsParent = document.getElementById("categoryListContainer");
+        const categoryElemArray = Array.from(categoryBtnsParent.children);
+        let result = null
+        categoryElemArray.forEach((e) => {
+            if(e.classList.contains("active")){
+                result = e
+            }
+        })
+        return result;
+    },
+    getActiveSupplierButton() {
+        const supplierBtnsParent = document.getElementById("supplierListContainer");
+        const supplierElemArray = Array.from(supplierBtnsParent.children);
+        let result = null;
+        supplierElemArray.forEach((e) => {
+            if(e.classList.contains("active")){
+                result = e;
+            }
+        })
+        return result;
     }
 }

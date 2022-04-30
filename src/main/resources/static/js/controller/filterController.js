@@ -14,6 +14,14 @@ export const filterController = {
         btnActionController.setCategoryButtonsEvtHandlers();
     },
 
+    async initSupplierFilter() {
+        const supplierArr = await dataHandler.getAllSupplierNames();
+        const listBuilder = htmlFactory(htmlTemplates.list);
+        const supplierContainer = listBuilder(listTypes.supplierList, supplierArr);
+        domManager.addChild("supContainer", supplierContainer);
+        btnActionController.setSupplierButtonsEvtHandlers();
+    },
+
     async initAllProducts() {
         const products = await dataHandler.getAllProducts();
         domManager.clearProductsContainer();
