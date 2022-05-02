@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ShopDTOService {
@@ -29,10 +30,9 @@ public class ShopDTOService {
     }
 
     public List<ProductCategoryDTO> getAllProductCategoriesDTO() {
-        List<ProductCategory> productCategories = shopService.getAllProductCategories();
-        List<ProductCategoryDTO> catDTOs = new ArrayList<>();
-        productCategories.forEach(e -> catDTOs.add(new ProductCategoryDTO(e)));
-        return catDTOs;
+        return shopService.getAllProductCategories().stream()
+                .map(ProductCategoryDTO::new)
+                .collect(Collectors.toList());
     }
 
     public List<ProductDTO> getAllProductsDTO() {

@@ -32,10 +32,9 @@ public class ShopRestController {
     }
     @PostMapping("/product/findByCustomFilter")
     public List<ProductDTO> getProductsBySupplier(@RequestBody Map<String, Integer> filterOptions) {
-
+//        @RequestParam(defaultValue = "0") int supplierId, @RequestParam String categoryId
         return serviceDTO.getProductsDTOForFilter(filterOptions.get("supplierId"),filterOptions.get("categoryId"));
     }
-
 
     @GetMapping("/category/findAll")
     public List<ProductCategoryDTO> getAllCategoryNames() {
