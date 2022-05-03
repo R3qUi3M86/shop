@@ -7,25 +7,17 @@ export const dataHandler = {
         return await apiGet("/category/findAll");
     },
 
-    getAllProducts: async function (){
-        return await apiGet("/product/findAll");
-    },
-
     addProductToCart: async function (payload){
         return await apiPost("/cart/addProduct", payload);
-    },
-    getProductsBySupplier: async function (supplierId) {
-        return await apiPost("/product/findBySupplier", supplierId);
     },
     getAllSupplierNames: async function (){
         return await apiGet("/supplier/findAll");
     },
     getProductsByCustomFilter: async function (supplierId, categoryId) {
-        let dict = {
-            "supplierId": supplierId,
-            "categoryId": categoryId,
-        }
-        return await apiPost("product/findByCustomFilter", dict)
+        return await apiGet('product/filter?' + new URLSearchParams({
+                categoryId: categoryId,
+                supplierId: supplierId,
+        }))
     }
 };
 
