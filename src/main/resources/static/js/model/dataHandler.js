@@ -14,19 +14,34 @@ export const dataHandler = {
     addProductToCart: async function (payload){
         return await apiPost("/cart/addProduct", payload);
     },
+
+    removeProductFromCart: async function (payload){
+        return await apiPost("/cart/removeProduct", payload);
+    },
+
     getProductsBySupplier: async function (supplierId) {
         return await apiPost("/product/findBySupplier", supplierId);
     },
+
     getAllSupplierNames: async function (){
         return await apiGet("/supplier/findAll");
     },
+
     getProductsByCustomFilter: async function (supplierId, categoryId) {
         let dict = {
             "supplierId": supplierId,
             "categoryId": categoryId,
         }
         return await apiPost("product/findByCustomFilter", dict)
-    }
+    },
+
+    getUserOrder: async function (userName){
+        return await apiPost("/order/find", {"userName": userName})
+    },
+
+    emptyCart: async function (userName){
+        return await apiPost("/order/clear", {"userName": userName})
+    },
 };
 
 async function apiGet(url) {

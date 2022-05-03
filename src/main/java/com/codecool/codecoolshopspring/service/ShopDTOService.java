@@ -6,11 +6,12 @@ import com.codecool.codecoolshopspring.model.Supplier;
 import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import com.codecool.codecoolshopspring.model.dto.SupplierDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ShopDTOService {
@@ -58,15 +59,16 @@ public class ShopDTOService {
 
     public List<ProductDTO> getProductsDTOForFilter(int supplierId, int categoryId) {
         List<Product> products = shopService.getAllProducts();
-        System.out.println(products);
         ProductCategory productCategory = shopService.getProductCategory(categoryId);
-        System.out.println(productCategory);
         Supplier supplier = shopService.getSupplier(supplierId);
-        System.out.println(supplier);
         List<ProductDTO> prodDTOs = new ArrayList<>();
         products.stream()
                 .filter(e -> e.getSupplier().equals(supplier) && e.getProductCategory().equals(productCategory))
                 .forEach(e -> prodDTOs.add(new ProductDTO(e)));
         return prodDTOs;
+    }
+
+    public List<ProductDTO> getProductsDTOList(Set<Product> productSet){
+        return productSet.stream().map(ProductDTO::new).collect(Collectors.toList());
     }
 }

@@ -20,6 +20,15 @@ public class Order extends BaseModel{
         }
     }
 
+    public void removeFromOrder(Product product){
+        if (orderedProducts.containsKey(product)){
+            orderedProducts.put(product, orderedProducts.get(product) - 1);
+            if (orderedProducts.get(product) == 0){
+                orderedProducts.remove(product);
+            }
+        }
+    }
+
     public OrderStatus getStatus() {
         return orderStatus;
     }
@@ -34,5 +43,9 @@ public class Order extends BaseModel{
             count += orderedProducts.get(product);
         }
         return count;
+    }
+
+    public void setOrderedProducts(Map<Product, Integer> orderedProducts) {
+        this.orderedProducts = orderedProducts;
     }
 }

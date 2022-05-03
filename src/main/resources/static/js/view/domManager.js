@@ -11,6 +11,12 @@ export const domManager = {
         }
     },
 
+    refreshBasketContent(content){
+        const parent = document.getElementById("cartModalContent");
+        parent.innerHTML = "";
+        parent.appendChild(content);
+    },
+
     deactivateAllCategories(){
         const categoryBtnsParent = document.getElementById("categoryListContainer");
         const categoryElemArray = Array.from(categoryBtnsParent.children);
@@ -38,7 +44,6 @@ export const domManager = {
             e.classList.remove("active");
         })
     },
-
 
     categoryFilterIsActive() {
         const categoryBtnsParent = document.getElementById("categoryListContainer");
@@ -75,6 +80,7 @@ export const domManager = {
         })
         return result;
     },
+
     getActiveSupplierButton() {
         const supplierBtnsParent = document.getElementById("supplierListContainer");
         const supplierElemArray = Array.from(supplierBtnsParent.children);
@@ -85,5 +91,35 @@ export const domManager = {
             }
         })
         return result;
+    },
+
+    enableButton(buttonId){
+        const button = document.getElementById(buttonId);
+        if (button){
+            button.classList.remove("disabled");
+        } else {
+            console.error("could not find such html element: " + buttonId);
+        }
+    },
+
+    disableButton(buttonId){
+        const button = document.getElementById(buttonId);
+        if (button){
+            button.classList.add("disabled");
+        } else {
+            console.error("could not find such html element: " + buttonId);
+        }
+    },
+
+    updateCartIconQuantity(qty){
+        const cartQty = document.getElementById("cart-item-qty");
+        if (cartQty){
+            cartQty.innerText = qty;
+            if (parseInt(qty) > 0){
+                cartQty.classList.remove("visually-hidden");
+            } else {
+                cartQty.classList.add("visually-hidden");
+            }
+        }
     }
 }

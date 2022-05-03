@@ -2,8 +2,6 @@ package com.codecool.codecoolshopspring.service;
 
 import com.codecool.codecoolshopspring.model.Order;
 import com.codecool.codecoolshopspring.model.Supplier;
-import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
-import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import com.codecool.codecoolshopspring.repository.OrderRepository;
 import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
@@ -58,6 +56,18 @@ public class ShopService {
         return orderRepository.findByUserName(userName);
     }
 
+    public Map<String, String> clearUserOrder(String userName){
+        Optional<Order> order = getUserOrder(userName);
+        Map<String, String> response = new HashMap<>();
+        if (order.isPresent()){
+            order.get().setOrderedProducts(new HashMap<>());
+            response.put("status", "order clear!");
+        } else {
+            response.put("status", "order not found!");
+        }
+        return response;
+    }
+
     public Optional<Product> getProductById(int id){
         return productRepository.findById(id);
     }
@@ -69,11 +79,18 @@ public class ShopService {
     public Map<String, Integer> addProductToOrder(String userName, Integer productId) {
         Optional<Product> optProduct = getProductById(productId);
         Map<String, Integer> response = new HashMap<>();
-        optProduct.ifPresent(product -> setOrder(product, userName, response));
+        optProduct.ifPresent(product -> setOrder(product, userName, response, true));
         return response;
     }
 
-    private void setOrder(Product product, String userName, Map<String, Integer> response){
+    public Map<String, Integer> removeProductFromOrder(String userName, Integer productId) {
+        Optional<Product> optProduct = getProductById(productId);
+        Map<String, Integer> response = new HashMap<>();
+        optProduct.ifPresent(product -> setOrder(product, userName, response, false));
+        return response;
+    }
+
+    private void setOrder(Product product, String userName, Map<String, Integer> response, boolean add){
         Optional<Order> optOrder = getUserOrder(userName);
         Order order;
         if (optOrder.isEmpty()){
@@ -82,7 +99,11 @@ public class ShopService {
         } else {
             order = optOrder.get();
         }
-        order.addToOrder(product);
+        if (add) {
+            order.addToOrder(product);
+        } else {
+            order.removeFromOrder(product);
+        }
         response.put("productsCount", order.countProducts());
     }
 

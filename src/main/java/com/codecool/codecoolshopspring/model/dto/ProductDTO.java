@@ -9,7 +9,7 @@ public class ProductDTO {
     protected int id;
     protected String name;
     protected String description;
-    private BigDecimal defaultPrice;
+    private String defaultPrice;
     private Currency defaultCurrency;
     private String productCategory;
     private String supplier;
@@ -18,7 +18,7 @@ public class ProductDTO {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
-        this.defaultPrice = product.getDefaultPrice();
+        this.defaultPrice = product.getDefaultPrice().toPlainString();
         this.defaultCurrency = product.getDefaultCurrency();
         this.productCategory = product.getProductCategory().getName();
         this.supplier = product.getSupplier().getName();
@@ -36,7 +36,7 @@ public class ProductDTO {
         return description;
     }
 
-    public BigDecimal getDefaultPrice() {
+    public String getDefaultPrice() {
         return defaultPrice;
     }
 
