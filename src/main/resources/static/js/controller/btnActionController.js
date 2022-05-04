@@ -125,6 +125,7 @@ async function updateCartContentEvtHandler(){
         domManager.refreshBasketContent(basketBuilder(basketTypes.basketProducts, order["order"]["orderedProducts"], order["products"]))
         domManager.enableButton("emptyCartBtn");
         domManager.enableButton("checkoutBtn");
+        btnActionController.setCheckoutEvtHandler();
         btnActionController.setAddRemoveProductEvtHandlers();
     }
 }
@@ -154,5 +155,6 @@ async function decreaseProductAmtEvtHandler(e){
 }
 
 async function checkoutEvtHandler(){
-
+    const order = await dataHandler.getUserOrder("stiepan");
+    let response = await dataHandler.goToCheckout(order);
 }

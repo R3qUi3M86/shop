@@ -1,6 +1,7 @@
 package com.codecool.codecoolshopspring.controller;
 
 import com.codecool.codecoolshopspring.model.Order;
+import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.dto.OrderDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;

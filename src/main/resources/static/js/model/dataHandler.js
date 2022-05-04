@@ -42,6 +42,9 @@ export const dataHandler = {
     emptyCart: async function (userName){
         return await apiPost("/order/clear", {"userName": userName})
     },
+    goToCheckout: async function (order){
+        return await apiPost("/checkout", order)
+    },
 };
 
 async function apiGet(url) {
