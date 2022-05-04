@@ -127,5 +127,5 @@ async function decreaseProductAmtEvtHandler(e){
 }
 
 async function checkoutEvtHandler(){
-    let response = dataHandler.getCheckoutPage("stiepan");
+    //MAYBE IMPLEMENT NORMAL BUTTON INSTEAD OF FORM?
 }
