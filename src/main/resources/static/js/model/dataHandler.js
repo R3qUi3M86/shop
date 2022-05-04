@@ -23,7 +23,7 @@ export const dataHandler = {
         return await apiGet('product/filter?' + new URLSearchParams({
                 categoryId: categoryId,
                 supplierId: supplierId,
-        }))
+        }));
     },
 
     getUserOrder: async function (userName){
@@ -33,6 +33,12 @@ export const dataHandler = {
     emptyCart: async function (userName){
         return await apiPost("/order/clear", {"userName": userName})
     },
+
+    getCheckoutPage: async function (userName){
+        return await apiGet("/checkout?", + new URLSearchParams({
+            userName: userName,
+        }));
+    }
 };
 
 async function apiGet(url) {

@@ -5,15 +5,12 @@ import com.codecool.codecoolshopspring.model.dto.OrderDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductCategoryDTO;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import com.codecool.codecoolshopspring.model.dto.SupplierDTO;
-import com.codecool.codecoolshopspring.service.ShopDTOService;
+import com.codecool.codecoolshopspring.service.DTOService;
 import com.codecool.codecoolshopspring.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController // - using this makes controler not require @ResponseBody annotation in each function that returns JSON
 public class ShopRestController {
@@ -62,7 +59,7 @@ public class ShopRestController {
         if (order.isPresent()) {
             OrderDTO orderDTO = new OrderDTO(order.get());
             response.put("order", orderDTO);
-            response.put("products", serviceDTO.getProductsDTOList(order.get().getProducts().keySet()));
+            response.put("products", serviceDTO.getProductDTOService().getProductsDTOList(order.get().getProducts().keySet()));
         } else {
             response.put("order", "not found");
         }

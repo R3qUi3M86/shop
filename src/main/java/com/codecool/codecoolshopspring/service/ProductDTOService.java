@@ -1,10 +1,12 @@
 package com.codecool.codecoolshopspring.service;
 
 
+import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,5 +39,9 @@ public class ProductDTOService {
                     .map(ProductDTO::new)
                     .collect(Collectors.toList());
         }
+    }
+
+    public List<ProductDTO> getProductsDTOList(Set<Product> productSet){
+        return productSet.stream().map(ProductDTO::new).collect(Collectors.toList());
     }
 }
