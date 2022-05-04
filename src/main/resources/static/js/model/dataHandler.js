@@ -10,15 +10,29 @@ export const dataHandler = {
     addProductToCart: async function (payload){
         return await apiPost("/cart/addProduct", payload);
     },
+
+    removeProductFromCart: async function (payload){
+        return await apiPost("/cart/removeProduct", payload);
+    },
+
     getAllSupplierNames: async function (){
         return await apiGet("/supplier/findAll");
     },
+
     getProductsByCustomFilter: async function (supplierId, categoryId) {
         return await apiGet('product/filter?' + new URLSearchParams({
                 categoryId: categoryId,
                 supplierId: supplierId,
         }))
-    }
+    },
+
+    getUserOrder: async function (userName){
+        return await apiPost("/order/find", {"userName": userName})
+    },
+
+    emptyCart: async function (userName){
+        return await apiPost("/order/clear", {"userName": userName})
+    },
 };
 
 async function apiGet(url) {

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="copy">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="d-flex flex-grow-1 justify-content-center">
+            <h5 class="modal-title" id="shoppingCartLabel">Shopping cart</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="cartModalContent" class="modal-body">
+          <div class="text-center flex-grow-1">
+            <h3>Your cart is empty</h3>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="d-flex flex-grow-1 justify-content-between">
+            <button id="emptyCartBtn" type="button" class="btn btn-secondary disabled">Empty Cart</button>
+            <form action="#" data-th-action="@{/checkout}" method="get">
+              <button id="checkoutBtn" type="submit" class="btn btn-primary disabled">Checkout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
