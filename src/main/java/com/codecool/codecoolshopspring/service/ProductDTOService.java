@@ -18,27 +18,11 @@ public class ProductDTOService {
     }
 
     public List<ProductDTO> getProductsDTOForFilter(int supplierId, int categoryId) {
-        if (supplierId == 0 && categoryId == 0) {
             return shopService.getAllProducts().stream()
+                    .filter(e -> supplierId == 0 || e.getSupplier().equals(shopService.getSupplier(supplierId)))
+                    .filter(e -> categoryId == 0 || e.getProductCategory().equals(shopService.getProductCategory(categoryId)))
                     .map(ProductDTO::new)
                     .collect(Collectors.toList());
-        } else if (supplierId == 0 && categoryId > 0) {
-            return shopService.getAllProducts().stream()
-                    .filter(e -> e.getProductCategory().equals(shopService.getProductCategory(categoryId)))
-                    .map(ProductDTO::new)
-                    .collect(Collectors.toList());
-        } else if (supplierId > 0 && categoryId == 0) {
-            return shopService.getAllProducts().stream()
-                    .filter(e -> e.getSupplier().equals(shopService.getSupplier(supplierId)))
-                    .map(ProductDTO::new)
-                    .collect(Collectors.toList());
-        } else {
-            return shopService.getAllProducts().stream()
-                    .filter(e -> e.getSupplier().equals(shopService.getSupplier(supplierId)))
-                    .filter(e -> e.getProductCategory().equals(shopService.getProductCategory(categoryId)))
-                    .map(ProductDTO::new)
-                    .collect(Collectors.toList());
-        }
     }
 
     public List<ProductDTO> getProductsDTOList(Set<Product> productSet){
