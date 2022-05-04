@@ -23,7 +23,7 @@ export const filterController = {
     },
 
     async initAllProducts() {
-        const products = await dataHandler.getAllProducts();
+        const products = await dataHandler.getProductsByCustomFilter(0,0);
         domManager.clearProductsContainer();
         domManager.displayProducts(products);
         btnActionController.setProductBuyEvtHandlers();

@@ -56,20 +56,7 @@ export const btnActionController = {
 async function selectSupplierEvtHandler(e) {
     const target = e.currentTarget;
     let products;
-    if (target.dataset.supplierId == 0) {
-        if (domManager.getActiveCategoryButton().dataset.categoryId > 0) {
-            products = await dataHandler.getProductsByCategory(domManager.getActiveCategoryButton().dataset.categoryId);
-        } else {
-            products = await dataHandler.getAllProducts();
-        }
-    } else {
-        if (domManager.categoryFilterIsActive() && domManager.getActiveCategoryButton().dataset.categoryId > 0) {
-            const categoryButton = domManager.getActiveCategoryButton();
-            products = await dataHandler.getProductsByCustomFilter(target.dataset.supplierId, categoryButton.dataset.categoryId)
-        } else {
-            products = await dataHandler.getProductsBySupplier(target.dataset.supplierId);
-        }
-    }
+    products = await dataHandler.getProductsByCustomFilter(target.dataset.supplierId, domManager.getActiveCategoryButton().dataset.categoryId)
     domManager.deactivateAllSuppliers();
     target.classList.add("active");
     domManager.clearProductsContainer();
@@ -82,21 +69,7 @@ async function selectSupplierEvtHandler(e) {
 async function selectCategoryEvtHandler(e) {
     const target = e.currentTarget;
     let products;
-    if (target.dataset.categoryId == 0) {
-        if (domManager.getActiveSupplierButton().dataset.supplierId > 0) {
-            products = await dataHandler.getProductsBySupplier(domManager.getActiveSupplierButton().dataset.supplierId);
-        } else {
-            products = await dataHandler.getAllProducts();
-        }
-    } else {
-        if (domManager.supplierFilterIsActive() && domManager.getActiveSupplierButton().dataset.supplierId > 0) {
-            const supplierButton = domManager.getActiveSupplierButton();
-            products = await dataHandler.getProductsByCustomFilter(supplierButton.dataset.supplierId, target.dataset.categoryId)
-        } else {
-            products = await dataHandler.getProductsByCategory(target.dataset.categoryId);
-        }
-
-    }
+    products = await dataHandler.getProductsByCustomFilter(domManager.getActiveSupplierButton().dataset.supplierId, target.dataset.categoryId)
     domManager.deactivateAllCategories();
     target.classList.add("active");
     domManager.clearProductsContainer();
