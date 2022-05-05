@@ -7,6 +7,8 @@ public class Order extends BaseModel{
     OrderStatus orderStatus = OrderStatus.PENDING;
     Map<Product, Integer> orderedProducts = new HashMap<>();
 
+    BillingDetails billingDetails;
+
     public Order(int id, String userName){
         super(userName, ("order" + id));
         this.id = id;
@@ -47,5 +49,29 @@ public class Order extends BaseModel{
 
     public void setOrderedProducts(Map<Product, Integer> orderedProducts) {
         this.orderedProducts = orderedProducts;
+    }
+
+    public Integer get(Product product) {
+        return orderedProducts.get(product);
+    }
+
+    public void setBillingDetails(BillingDetails billingDetails) {
+        this.billingDetails = billingDetails;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderStatus=" + orderStatus +
+                ", orderedProducts=" + orderedProducts +
+                ", billingDetails=" + billingDetails +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

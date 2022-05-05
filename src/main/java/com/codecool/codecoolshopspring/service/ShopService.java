@@ -11,6 +11,7 @@ import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
@@ -114,5 +115,14 @@ public class ShopService {
 
     public List<Supplier> getAllSuppliers() {
         return supplierRepository.findAll();
+    }
+
+    public BigDecimal getTotalOrderValue(Optional<Order> order) {
+        BigDecimal result = new BigDecimal( 0);
+        Order orderGet = order.get();
+        for (Product product: orderGet.getProducts().keySet()) {
+            result = result.add(product.getDefaultPrice().multiply(new BigDecimal(orderGet.get(product))));
+        }
+        return result;
     }
 }
