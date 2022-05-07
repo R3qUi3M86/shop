@@ -1,6 +1,7 @@
 package com.codecool.codecoolshopspring.controller.rest;
 
 import com.codecool.codecoolshopspring.service.ShopService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,13 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class CartRestController {
 
     private final ShopService service;
-
-    public CartRestController(ShopService service) {
-        this.service = service;
-    }
 
     @PostMapping("/cart/addProduct")
     public Map<String, Integer> addProductToCart(@RequestBody Map<String, Object> payload){

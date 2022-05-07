@@ -8,29 +8,20 @@ import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
 import com.codecool.codecoolshopspring.repository.SupplierRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.*;
 
+@RequiredArgsConstructor
 @Service
 public class ShopService {
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final OrderRepository orderRepository;
-
     private final SupplierRepository supplierRepository;
-
-    @Autowired
-    public ShopService(ProductRepository productRepository,
-                       ProductCategoryRepository productCategoryRepository,
-                       OrderRepository orderRepository, SupplierRepository supplierRepository) {
-        this.productRepository = productRepository;
-        this.productCategoryRepository = productCategoryRepository;
-        this.orderRepository = orderRepository;
-        this.supplierRepository = supplierRepository;
-    }
 
     public ProductCategory getProductCategory(int categoryId){
         return productCategoryRepository.find(categoryId).orElseThrow();
@@ -38,11 +29,6 @@ public class ShopService {
 
     public Supplier getSupplier(int supplierId){
         return supplierRepository.findById(supplierId).orElseThrow();
-    }
-
-    public List<Product> getProductsForCategory(int categoryId){
-        ProductCategory category = productCategoryRepository.find(categoryId).orElseThrow();
-        return productRepository.findAllByProductCategory(category);
     }
 
     public List<Product> getAllProducts() {
@@ -108,11 +94,6 @@ public class ShopService {
         response.put("productsCount", order.countProducts());
     }
 
-    public List<Product> getProductsForSupplier(int supplierId) {
-        Supplier supplier = supplierRepository.findById(supplierId).orElseThrow();
-        return productRepository.findAllBySupplier(supplier);
-    }
-
     public List<Supplier> getAllSuppliers() {
         return supplierRepository.findAll();
     }
@@ -120,7 +101,7 @@ public class ShopService {
     public BigDecimal getTotalOrderValue(Optional<Order> order) {
         BigDecimal result = new BigDecimal( 0);
         Order orderGet = order.get();
-        for (Product product: orderGet.getProducts().keySet()) {
+        for (Product product: orderGet.getOrderedProducts().keySet()) {
             result = result.add(product.getDefaultPrice().multiply(new BigDecimal(orderGet.get(product))));
         }
         return result;

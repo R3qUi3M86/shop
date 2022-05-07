@@ -3,19 +3,17 @@ package com.codecool.codecoolshopspring.service;
 
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.dto.ProductDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class ProductDTOService {
     private final ShopService shopService;
-
-    public ProductDTOService(ShopService shopService) {
-        this.shopService = shopService;
-    }
 
     public List<ProductDTO> getProductsDTOForFilter(int supplierId, int categoryId) {
             return shopService.getAllProducts().stream()
