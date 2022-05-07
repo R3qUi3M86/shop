@@ -1,17 +1,19 @@
 package com.codecool.codecoolshopspring.model.dto;
 
 import com.codecool.codecoolshopspring.model.Product;
+import lombok.Getter;
 
 import java.util.Currency;
 
+@Getter
 public class ProductDTO {
-    protected int id;
-    protected String name;
-    protected String description;
-    private String defaultPrice;
-    private Currency defaultCurrency;
-    private String productCategory;
-    private String supplier;
+    private final int id;
+    private final String name;
+    private final String description;
+    private final String defaultPrice;
+    private final Currency defaultCurrency;
+    private final String productCategory;
+    private final String supplier;
 
     public ProductDTO(Product product){
         this.id = product.getId();
@@ -21,33 +23,5 @@ public class ProductDTO {
         this.defaultCurrency = product.getDefaultCurrency();
         this.productCategory = product.getProductCategory().getName();
         this.supplier = product.getSupplier().getName();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getDefaultPrice() {
-        return defaultPrice;
-    }
-
-    public Currency getDefaultCurrency() {
-        return defaultCurrency;
-    }
-
-    public String getProductCategory() {
-        return productCategory;
-    }
-
-    public String getSupplier() {
-        return supplier;
     }
 }

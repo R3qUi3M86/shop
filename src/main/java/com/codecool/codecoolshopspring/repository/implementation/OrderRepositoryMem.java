@@ -22,7 +22,7 @@ public class OrderRepositoryMem implements OrderRepository {
     @Override
     public Optional<Order> findByUserName(String userName) {
         for (Order order : orders){
-            if (Objects.equals(order.getName(), userName) && order.getStatus() == OrderStatus.PENDING){
+            if (Objects.equals(order.getName(), userName) && order.getOrderStatus() == OrderStatus.PENDING){
                 return Optional.of(order);
             }
         }

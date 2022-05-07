@@ -1,8 +1,9 @@
 package com.codecool.codecoolshopspring.model;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-import java.lang.reflect.Field;
-
+@Data
+@NoArgsConstructor
 public class BaseModel {
 
     protected int id;
@@ -17,50 +18,4 @@ public class BaseModel {
         this.name = name;
         this.description = description;
     }
-
-    public BaseModel() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        for (Field field : this.getClass().getDeclaredFields()) {
-            field.setAccessible(true);
-            Object value = null;
-            try {
-                value = field.get(this);
-                if (value != null) {
-                    sb.append(field.getName() + ":" + value + ",");
-                }
-            } catch (IllegalAccessException e) {
-
-            }
-        }
-        return sb.toString();
-    }
-
 }

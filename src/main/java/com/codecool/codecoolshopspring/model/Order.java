@@ -1,13 +1,19 @@
 package com.codecool.codecoolshopspring.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class Order extends BaseModel{
-    OrderStatus orderStatus = OrderStatus.PENDING;
-    Map<Product, Integer> orderedProducts = new HashMap<>();
 
-    BillingDetails billingDetails;
+    private OrderStatus orderStatus = OrderStatus.PENDING;
+    private Map<Product, Integer> orderedProducts = new HashMap<>();
+    private BillingDetails billingDetails;
 
     public Order(int id, String userName){
         super(userName, ("order" + id));
@@ -31,14 +37,6 @@ public class Order extends BaseModel{
         }
     }
 
-    public OrderStatus getStatus() {
-        return orderStatus;
-    }
-
-    public Map<Product, Integer> getProducts() {
-        return orderedProducts;
-    }
-
     public Integer countProducts(){
         int count = 0;
         for (Product product : orderedProducts.keySet()){
@@ -47,31 +45,8 @@ public class Order extends BaseModel{
         return count;
     }
 
-    public void setOrderedProducts(Map<Product, Integer> orderedProducts) {
-        this.orderedProducts = orderedProducts;
-    }
-
     public Integer get(Product product) {
         return orderedProducts.get(product);
     }
 
-    public void setBillingDetails(BillingDetails billingDetails) {
-        this.billingDetails = billingDetails;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderStatus=" + orderStatus +
-                ", orderedProducts=" + orderedProducts +
-                ", billingDetails=" + billingDetails +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

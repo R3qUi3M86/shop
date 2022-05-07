@@ -1,19 +1,16 @@
 package com.codecool.codecoolshopspring.controller;
 
 import com.codecool.codecoolshopspring.service.ShopService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+@RequiredArgsConstructor
 @Controller
 public class MainPageController {
-    private final ShopService service;
 
-    @Autowired
-    public MainPageController(ShopService service) {
-        this.service = service;
-    }
+    private final ShopService service;
 
     @GetMapping("/")
     public String index(Model model) {
