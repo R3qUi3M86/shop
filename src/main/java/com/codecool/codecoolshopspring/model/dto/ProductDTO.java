@@ -2,7 +2,6 @@ package com.codecool.codecoolshopspring.model.dto;
 
 import com.codecool.codecoolshopspring.model.Product;
 
-import java.math.BigDecimal;
 import java.util.Currency;
 
 public class ProductDTO {
