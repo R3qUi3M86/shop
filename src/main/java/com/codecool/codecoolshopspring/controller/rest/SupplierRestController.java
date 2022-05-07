@@ -1,4 +1,4 @@
-package com.codecool.codecoolshopspring.controller;
+package com.codecool.codecoolshopspring.controller.rest;
 
 import com.codecool.codecoolshopspring.model.dto.SupplierDTO;
 import com.codecool.codecoolshopspring.service.ShopService;
