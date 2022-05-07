@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order extends BaseModel{
-    OrderStatus orderStatus = OrderStatus.PENDING;
-    Map<Product, Integer> orderedProducts = new HashMap<>();
+    private OrderStatus orderStatus = OrderStatus.PENDING;
+    private Map<Product, Integer> orderedProducts = new HashMap<>();
 
-    BillingDetails billingDetails;
+    private BillingDetails billingDetails;
 
     public Order(int id, String userName){
         super(userName, ("order" + id));
