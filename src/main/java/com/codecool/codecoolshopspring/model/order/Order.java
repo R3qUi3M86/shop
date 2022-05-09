@@ -25,7 +25,6 @@ public class Order{
     @ElementCollection
     @CollectionTable(name = "order_item_mapping",
             joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")})
-    @MapKeyColumn(name = "product")
     @Column(name = "quantity")
     private Map<Product, Integer> orderedProducts = new HashMap<>();
     @ManyToOne(fetch = FetchType.LAZY)
