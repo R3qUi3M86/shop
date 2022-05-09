@@ -18,6 +18,6 @@ public class CategoryService {
     }
 
     public Category getProductCategory(int categoryId){
-        return categoryRepository.find(categoryId).orElseThrow();
+        return categoryRepository.findById(categoryId).orElseThrow();
     }
 }

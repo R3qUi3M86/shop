@@ -2,23 +2,27 @@ package com.codecool.codecoolshopspring.model.order;
 
 import com.codecool.codecoolshopspring.model.product.Product;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
 public class Order{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String userName;
     private String description;
     private OrderStatus orderStatus = OrderStatus.PENDING;
     private Map<Product, Integer> orderedProducts = new HashMap<>();
     private BillingDetails billingDetails;
 
-    public Order(int id, String name){
+    public Order(int id, String userName){
         this.id = id;
-        this.name = name;
+        this.userName = userName;
         this.description = ("order" + id);
     }
 

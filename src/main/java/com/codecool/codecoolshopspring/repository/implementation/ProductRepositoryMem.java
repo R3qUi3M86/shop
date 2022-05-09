@@ -1,50 +1,50 @@
-package com.codecool.codecoolshopspring.repository.implementation;
-
-
-import com.codecool.codecoolshopspring.model.category.Category;
-import com.codecool.codecoolshopspring.repository.ProductRepository;
-import com.codecool.codecoolshopspring.model.product.Product;
-import com.codecool.codecoolshopspring.model.supplier.Supplier;
-import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-@Repository
-public class ProductRepositoryMem implements ProductRepository {
-
-    private List<Product> data = new ArrayList<>();
-
-    @Override
-    public void save(Product product) {
-        product.setId(data.size() + 1);
-        data.add(product);
-    }
-
-    @Override
-    public Optional<Product> findById(int id) {
-        return data.stream().filter(t -> t.getId() == id).findFirst();
-    }
-
-    @Override
-    public void deleteById(int id) {
-        data.remove(findById(id));
-    }
-
-    @Override
-    public List<Product> findAll() {
-        return data;
-    }
-
-    @Override
-    public List<Product> findAllBySupplier(Supplier supplier) {
-        return data.stream().filter(t -> t.getSupplier().equals(supplier)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Product> findAllByProductCategory(Category category) {
-        return data.stream().filter(t -> t.getCategory().equals(category)).collect(Collectors.toList());
-    }
-}
+//package com.codecool.codecoolshopspring.repository.implementation;
+//
+//
+//import com.codecool.codecoolshopspring.model.category.Category;
+//import com.codecool.codecoolshopspring.repository.ProductRepository;
+//import com.codecool.codecoolshopspring.model.product.Product;
+//import com.codecool.codecoolshopspring.model.supplier.Supplier;
+//import org.springframework.stereotype.Repository;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Optional;
+//import java.util.stream.Collectors;
+//
+//@Repository
+//public class ProductRepositoryMem implements ProductRepository {
+//
+//    private List<Product> data = new ArrayList<>();
+//
+//    @Override
+//    public void save(Product product) {
+//        product.setId(data.size() + 1);
+//        data.add(product);
+//    }
+//
+//    @Override
+//    public Optional<Product> findById(int id) {
+//        return data.stream().filter(t -> t.getId() == id).findFirst();
+//    }
+//
+//    @Override
+//    public void deleteById(int id) {
+//        data.remove(findById(id));
+//    }
+//
+//    @Override
+//    public List<Product> findAll() {
+//        return data;
+//    }
+//
+//    @Override
+//    public List<Product> findAllBySupplier(Supplier supplier) {
+//        return data.stream().filter(t -> t.getSupplier().equals(supplier)).collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Product> findAllByProductCategory(Category category) {
+//        return data.stream().filter(t -> t.getCategory().equals(category)).collect(Collectors.toList());
+//    }
+//}
