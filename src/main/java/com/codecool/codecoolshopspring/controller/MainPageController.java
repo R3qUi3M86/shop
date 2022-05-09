@@ -1,6 +1,5 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.service.ShopService;
 import com.codecool.codecoolshopspring.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

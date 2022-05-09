@@ -1,6 +1,5 @@
 package com.codecool.codecoolshopspring.controller.rest;
 
-import com.codecool.codecoolshopspring.service.ShopService;
 import com.codecool.codecoolshopspring.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
