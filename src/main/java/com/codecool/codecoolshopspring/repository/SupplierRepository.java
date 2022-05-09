@@ -1,6 +1,6 @@
 package com.codecool.codecoolshopspring.repository;
 
-import com.codecool.codecoolshopspring.model.Supplier;
+import com.codecool.codecoolshopspring.model.supplier.Supplier;
 
 import java.util.List;
 import java.util.Optional;

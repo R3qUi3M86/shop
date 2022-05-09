@@ -1,11 +1,10 @@
 package com.codecool.codecoolshopspring.repository.implementation;
 
 
+import com.codecool.codecoolshopspring.model.category.Category;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
-import com.codecool.codecoolshopspring.model.Product;
-import com.codecool.codecoolshopspring.model.ProductCategory;
-import com.codecool.codecoolshopspring.model.Supplier;
-import org.springframework.stereotype.Component;
+import com.codecool.codecoolshopspring.model.product.Product;
+import com.codecool.codecoolshopspring.model.supplier.Supplier;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class ProductRepositoryMem implements ProductRepository {
     }
 
     @Override
-    public List<Product> findAllByProductCategory(ProductCategory productCategory) {
-        return data.stream().filter(t -> t.getProductCategory().equals(productCategory)).collect(Collectors.toList());
+    public List<Product> findAllByProductCategory(Category category) {
+        return data.stream().filter(t -> t.getCategory().equals(category)).collect(Collectors.toList());
     }
 }

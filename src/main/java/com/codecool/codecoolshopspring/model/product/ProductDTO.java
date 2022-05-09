@@ -1,6 +1,6 @@
-package com.codecool.codecoolshopspring.model.dto;
+package com.codecool.codecoolshopspring.model.product;
 
-import com.codecool.codecoolshopspring.model.Product;
+import com.codecool.codecoolshopspring.model.product.Product;
 import lombok.Getter;
 
 import java.util.Currency;
@@ -21,7 +21,7 @@ public class ProductDTO {
         this.description = product.getDescription();
         this.defaultPrice = product.getDefaultPrice().toPlainString();
         this.defaultCurrency = product.getDefaultCurrency();
-        this.productCategory = product.getProductCategory().getName();
+        this.productCategory = product.getCategory().getName();
         this.supplier = product.getSupplier().getName();
     }
 }

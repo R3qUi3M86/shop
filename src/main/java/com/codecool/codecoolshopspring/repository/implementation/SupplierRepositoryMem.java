@@ -1,8 +1,7 @@
 package com.codecool.codecoolshopspring.repository.implementation;
 
 import com.codecool.codecoolshopspring.repository.SupplierRepository;
-import com.codecool.codecoolshopspring.model.Supplier;
-import org.springframework.stereotype.Component;
+import com.codecool.codecoolshopspring.model.supplier.Supplier;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

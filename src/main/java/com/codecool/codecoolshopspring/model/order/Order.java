@@ -1,23 +1,25 @@
-package com.codecool.codecoolshopspring.model;
+package com.codecool.codecoolshopspring.model.order;
 
+import com.codecool.codecoolshopspring.model.product.Product;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class Order extends BaseModel{
+public class Order{
 
+    private int id;
+    private String name;
+    private String description;
     private OrderStatus orderStatus = OrderStatus.PENDING;
     private Map<Product, Integer> orderedProducts = new HashMap<>();
     private BillingDetails billingDetails;
 
-    public Order(int id, String userName){
-        super(userName, ("order" + id));
+    public Order(int id, String name){
         this.id = id;
+        this.name = name;
+        this.description = ("order" + id);
     }
 
     public void addToOrder(Product product){

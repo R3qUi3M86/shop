@@ -1,6 +1,5 @@
-package com.codecool.codecoolshopspring.model.dto;
+package com.codecool.codecoolshopspring.model.supplier;
 
-import com.codecool.codecoolshopspring.model.Supplier;
 import lombok.Getter;
 
 @Getter

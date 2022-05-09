@@ -1,8 +1,7 @@
 package com.codecool.codecoolshopspring.repository;
 
-import com.codecool.codecoolshopspring.model.Order;
+import com.codecool.codecoolshopspring.model.order.Order;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface OrderRepository {

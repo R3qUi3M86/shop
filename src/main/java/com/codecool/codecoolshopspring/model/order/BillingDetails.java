@@ -1,4 +1,4 @@
-package com.codecool.codecoolshopspring.model;
+package com.codecool.codecoolshopspring.model.order;
 
 
 import lombok.Data;

@@ -12,7 +12,7 @@ export const dataHandler = {
     },
 
     removeProductFromCart: async function (payload){
-        return await apiPost("/cart/removeProduct", payload);
+        return await apiDelete("/cart/removeProduct", payload);
     },
 
     getAllSupplierNames: async function (){

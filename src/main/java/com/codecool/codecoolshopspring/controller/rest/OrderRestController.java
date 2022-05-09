@@ -1,9 +1,9 @@
 package com.codecool.codecoolshopspring.controller.rest;
 
-import com.codecool.codecoolshopspring.model.Order;
-import com.codecool.codecoolshopspring.model.dto.OrderDTO;
-import com.codecool.codecoolshopspring.service.ProductDTOService;
-import com.codecool.codecoolshopspring.service.ShopService;
+import com.codecool.codecoolshopspring.model.order.Order;
+import com.codecool.codecoolshopspring.model.order.OrderDTO;
+import com.codecool.codecoolshopspring.service.order.OrderService;
+import com.codecool.codecoolshopspring.service.product.ProductDTOService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +15,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 public class OrderRestController {
-    private final ShopService service;
+    private final OrderService orderService;
     private final ProductDTOService productDTOService;
 
     @PostMapping("/order/find")
     public Map<String, Object> getUserOrder(@RequestBody Map<String, Object> payload){
-        Optional<Order> order =  service.getUserOrder((String) payload.get("userName"));
+        Optional<Order> order =  orderService.getUserOrder((String) payload.get("userName"));
         Map<String, Object> response = new HashMap<>();
         if (order.isPresent()) {
             OrderDTO orderDTO = new OrderDTO(order.get());
@@ -34,6 +34,6 @@ public class OrderRestController {
 
     @PostMapping("/order/clear")
     public Map<String, String> emptyCurrentOrder(@RequestBody Map<String, Object> payload){
-        return service.clearUserOrder((String) payload.get("userName"));
+        return orderService.clearUserOrder((String) payload.get("userName"));
     }
 }

@@ -1,7 +1,7 @@
 package com.codecool.codecoolshopspring.controller.rest;
 
-import com.codecool.codecoolshopspring.model.dto.ProductDTO;
-import com.codecool.codecoolshopspring.service.ProductDTOService;
+import com.codecool.codecoolshopspring.model.product.ProductDTO;
+import com.codecool.codecoolshopspring.service.product.ProductDTOService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

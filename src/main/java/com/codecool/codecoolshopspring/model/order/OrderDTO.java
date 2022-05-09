@@ -1,7 +1,5 @@
-package com.codecool.codecoolshopspring.model.dto;
+package com.codecool.codecoolshopspring.model.order;
 
-import com.codecool.codecoolshopspring.model.Order;
-import com.codecool.codecoolshopspring.model.OrderStatus;
 import lombok.Getter;
 import lombok.ToString;
 

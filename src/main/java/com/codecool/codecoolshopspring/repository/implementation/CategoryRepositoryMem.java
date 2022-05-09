@@ -1,9 +1,8 @@
 package com.codecool.codecoolshopspring.repository.implementation;
 
 
-import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
-import com.codecool.codecoolshopspring.model.ProductCategory;
-import org.springframework.stereotype.Component;
+import com.codecool.codecoolshopspring.model.category.Category;
+import com.codecool.codecoolshopspring.repository.CategoryRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,18 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ProductCategoryRepositoryMem implements ProductCategoryRepository {
+public class CategoryRepositoryMem implements CategoryRepository {
 
-    private List<ProductCategory> data = new ArrayList<>();
+    private List<Category> data = new ArrayList<>();
 
     @Override
-    public void save(ProductCategory category) {
+    public void save(Category category) {
         category.setId(data.size() + 1);
         data.add(category);
     }
 
     @Override
-    public Optional<ProductCategory> find(int id) {
+    public Optional<Category> find(int id) {
         return data.stream().filter(t -> t.getId() == id).findFirst();
     }
 
@@ -32,7 +31,7 @@ public class ProductCategoryRepositoryMem implements ProductCategoryRepository {
     }
 
     @Override
-    public List<ProductCategory> findAll() {
+    public List<Category> findAll() {
         return data;
     }
 }

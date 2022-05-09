@@ -1,7 +1,7 @@
 package com.codecool.codecoolshopspring.repository.implementation;
 
-import com.codecool.codecoolshopspring.model.Order;
-import com.codecool.codecoolshopspring.model.OrderStatus;
+import com.codecool.codecoolshopspring.model.order.Order;
+import com.codecool.codecoolshopspring.model.order.OrderStatus;
 import com.codecool.codecoolshopspring.repository.OrderRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,11 +1,11 @@
 package com.codecool.codecoolshopspring;
 
-import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
+import com.codecool.codecoolshopspring.model.category.Category;
+import com.codecool.codecoolshopspring.repository.CategoryRepository;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.repository.SupplierRepository;
-import com.codecool.codecoolshopspring.model.Product;
-import com.codecool.codecoolshopspring.model.ProductCategory;
-import com.codecool.codecoolshopspring.model.Supplier;
+import com.codecool.codecoolshopspring.model.product.Product;
+import com.codecool.codecoolshopspring.model.supplier.Supplier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -15,12 +15,12 @@ import java.math.BigDecimal;
 public class Initializer {
 
     private final ProductRepository productRepository;
-    private final ProductCategoryRepository productCategoryRepository;
+    private final CategoryRepository categoryRepository;
     private final SupplierRepository supplierRepository;
 
-    public Initializer(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, SupplierRepository supplierRepository) {
+    public Initializer(ProductRepository productRepository, CategoryRepository categoryRepository, SupplierRepository supplierRepository) {
         this.productRepository = productRepository;
-        this.productCategoryRepository = productCategoryRepository;
+        this.categoryRepository = categoryRepository;
         this.supplierRepository = supplierRepository;
     }
 
@@ -35,12 +35,12 @@ public class Initializer {
         supplierRepository.save(apple);
 
         //setting up a new product category
-        ProductCategory tablets = new ProductCategory("Tablets", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        ProductCategory laptops = new ProductCategory("Laptops", "Hardware", "A small, portable personal computer (PC) with a screen and alphanumeric keyboard.");
-        ProductCategory smartphones = new ProductCategory("Smartphones", "Hardware", "A portable device that combines mobile telephone and computing functions into one unit.");
-        productCategoryRepository.save(tablets);
-        productCategoryRepository.save(laptops);
-        productCategoryRepository.save(smartphones);
+        Category tablets = new Category("Tablets", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        Category laptops = new Category("Laptops", "Hardware", "A small, portable personal computer (PC) with a screen and alphanumeric keyboard.");
+        Category smartphones = new Category("Smartphones", "Hardware", "A portable device that combines mobile telephone and computing functions into one unit.");
+        categoryRepository.save(tablets);
+        categoryRepository.save(laptops);
+        categoryRepository.save(smartphones);
 
         //setting up products and printing it
         productRepository.save(new Product("Amazon Fire", new BigDecimal("49.90"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablets, amazon));
