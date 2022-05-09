@@ -20,7 +20,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     public Optional<Order> getUserOrder(String userName) {
-        return orderRepository.findByUserName(userName);
+        return orderRepository.findPendingByUserName(userName);
     }
 
     public Map<String, String> clearUserOrder(String userName){
@@ -53,8 +53,8 @@ public class OrderService {
         Optional<Order> optOrder = getUserOrder(userName);
         Order order;
         if (optOrder.isEmpty()){
-            order = new Order(orderRepository.findLastOrderId()+1, userName);
-            putNewOrder(order);
+            order = new Order(userName);
+            putOrder(order);
         } else {
             order = optOrder.get();
         }
@@ -63,6 +63,7 @@ public class OrderService {
         } else {
             order.removeFromOrder(product);
         }
+        orderRepository.save(order);
         response.put("productsCount", order.countProducts());
     }
 
@@ -75,7 +76,7 @@ public class OrderService {
         return result;
     }
 
-    private void putNewOrder(Order order){
+    public void putOrder(Order order){
         orderRepository.save(order);
     }
 }

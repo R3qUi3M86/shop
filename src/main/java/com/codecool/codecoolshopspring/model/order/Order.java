@@ -1,29 +1,39 @@
 package com.codecool.codecoolshopspring.model.order;
 
+import com.codecool.codecoolshopspring.model.billingDetails.BillingDetails;
 import com.codecool.codecoolshopspring.model.product.Product;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Order{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     private String userName;
-    private String description;
     private OrderStatus orderStatus = OrderStatus.PENDING;
+    @ElementCollection
+    @CollectionTable(name = "order_item_mapping",
+            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")})
+    @MapKeyColumn(name = "product")
+    @Column(name = "quantity")
     private Map<Product, Integer> orderedProducts = new HashMap<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "billing_details_id")
     private BillingDetails billingDetails;
 
-    public Order(int id, String userName){
-        this.id = id;
+    public Order(String userName){
         this.userName = userName;
-        this.description = ("order" + id);
     }
 
     public void addToOrder(Product product){

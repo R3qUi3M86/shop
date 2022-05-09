@@ -1,8 +1,9 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.model.order.BillingDetails;
+import com.codecool.codecoolshopspring.model.billingDetails.BillingDetails;
 import com.codecool.codecoolshopspring.model.order.Order;
 import com.codecool.codecoolshopspring.model.order.OrderStatus;
+import com.codecool.codecoolshopspring.service.billingDetails.BillingDetailsService;
 import com.codecool.codecoolshopspring.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class CheckoutPageController {
 
     private final OrderService orderService;
+    private final BillingDetailsService billingDetailsService;
 
     @GetMapping("/checkout")
     public String checkout(Model model) {
@@ -38,15 +40,17 @@ public class CheckoutPageController {
     }
 
     @PostMapping("/finalizeOrder")
-    public String finalizeOrder(@ModelAttribute BillingDetails billingDetails) throws IOException {
+    public String finalizeOrder(@ModelAttribute BillingDetails billingDetails){
         String userName = "stiepan"; //TODO replace with cookie
         Optional<Order> order = orderService.getUserOrder(userName);
         if (order.isPresent()) {
             order.get().setOrderStatus(OrderStatus.PROCESSING);
             order.get().setBillingDetails(billingDetails);
-            BufferedWriter writer = new BufferedWriter(new FileWriter(order.get().getId() + ".log"));
-            writer.write(order.get().toString());
-            writer.close();
+            billingDetailsService.putBillingDetails(billingDetails);
+            orderService.putOrder(order.get());
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(order.get().getId() + ".log"));
+//            writer.write(order.get().toString());
+//            writer.close();
             return "checkout/finalize";
         } else {
             return "checkout/orderNotFound";

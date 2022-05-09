@@ -7,12 +7,12 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Currency;
+import java.util.Objects;
 
-@NoArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
+@NoArgsConstructor
 public class Product{
 
     @Id
@@ -36,5 +36,18 @@ public class Product{
         this.defaultCurrency = Currency.getInstance(currencyString);
         this.supplier = supplier;
         this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

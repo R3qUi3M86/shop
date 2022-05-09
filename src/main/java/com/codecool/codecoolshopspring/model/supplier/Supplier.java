@@ -1,10 +1,7 @@
 package com.codecool.codecoolshopspring.model.supplier;
 
 import com.codecool.codecoolshopspring.model.product.Product;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
