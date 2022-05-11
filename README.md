@@ -1,4 +1,4 @@
-# Codecool shop (sprint 1)
+# Shop-Now
 
 ## Story
 
@@ -7,14 +7,6 @@ project, the goal is to build one of the [most common type of websites on the
 web](https://www.expertmarket.co.uk/web-design/different-types-of-websites): an
 online eCommerce web-application, where users can browse products, add them into
 a shopping cart, then check out and make payments.
-
-## What are you going to learn?
-
-- how to create dynamic web pages in `Java` with `Spring`,
-- how to use the `DAO` design pattern in `Java`,
-- how to use the `Thymeleaf` templating engine.
-- how to handle fractional monetary unit appropriately with BigDecimal
-
 
 ## Tasks
 
@@ -61,23 +53,3 @@ a shopping cart, then check out and make payments.
 
 11. As an Admin, I want to have a log file of the checkout processes (per Order), to see the steps of every Order and investigate issues.
     - If a checkout process is started, all the steps and details are saved into a JSON file. The filename is the Order ID and the Date.
-
-## General requirements
-
-- Advanced OOP concepts, such as inheritance, are used in the project. There is at least one abstract class and one interface implemented.
-- The project maintains the three-layer structure of controllers handling HTTP, service objects handling business logic, and DAOs handling data access.
-- The page does not show a server error anytime during the review.
-- All code is pushed to GitHub repository in atomic commits. The implemented feature-related commits are managed on separated feature branches and merged in a pull request to the `master` branch.
-
-## Hints
-
-- Do not use a database. Use in-memory storage or file storage, but through the DAO (Data Access Object) pattern.
-- Use fake payment implementations. It is not required to integrate real payment services.
-
-## Background materials
-
-- <i class="far fa-exclamation"></i> [Introducing Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-- <i class="far fa-exclamation"></i> [Java Dao pattern](https://www.baeldung.com/java-dao-pattern)
-- <i class="far fa-exclamation"></i> [Thymeleaf standard dialect](https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html)
-- <i class="far fa-book-open"></i> [Thymeleaf introductions](https://www.thymeleaf.org/documentation.html#introductions)
-
