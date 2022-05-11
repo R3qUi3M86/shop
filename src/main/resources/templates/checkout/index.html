@@ -61,11 +61,12 @@
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
-            <form class="needs-validation" novalidate="" action="#" data-th-action="@{/finalizeOrder}" th:object="${billingDetails}" method="post">
+            <form class="was-validated" action="#" data-th-action="@{/finalizeOrder}" th:object="${billingDetails}" method="post">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName" >First name</label>
                         <input th:field="*{firstName}" type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+<!--                        <div class="valid-feedback">Jestes super</div>-->
                         <div class="invalid-feedback"> Valid first name is required. </div>
                     </div>
                     <div class="col-md-6 mb-3">
