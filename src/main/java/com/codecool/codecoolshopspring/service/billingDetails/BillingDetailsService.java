@@ -4,6 +4,7 @@ import com.codecool.codecoolshopspring.model.billingDetails.BillingDetails;
 import com.codecool.codecoolshopspring.repository.BillingDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 @Service
 @RequiredArgsConstructor
