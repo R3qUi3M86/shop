@@ -1,6 +1,7 @@
 package com.codecool.codecoolshopspring.service.order;
 
 import com.codecool.codecoolshopspring.model.order.Order;
+import com.codecool.codecoolshopspring.model.order.OrderStatus;
 import com.codecool.codecoolshopspring.model.product.Product;
 import com.codecool.codecoolshopspring.repository.OrderRepository;
 import com.codecool.codecoolshopspring.service.product.ProductService;
@@ -20,7 +21,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     public Optional<Order> getUserOrder(String userName) {
-        return orderRepository.findPendingByUserName(userName);
+        return orderRepository.findOrderByOrderStatusAndUserName(OrderStatus.PENDING, userName);
     }
 
     public Map<String, String> clearUserOrder(String userName){
