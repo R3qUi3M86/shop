@@ -2,6 +2,7 @@ package com.codecool.codecoolshopspring.model.user;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -31,6 +34,7 @@ public class User implements UserDetails {
     @NotNull
     private String roles;
 
+
     public User(String username, String email, String password, String roles) {
         this.username = username;
         this.email = email;
@@ -38,14 +42,18 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(getRoles()));
+        return grantedAuthorities;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return tr;
+        return true;
     }
 
     @Override
