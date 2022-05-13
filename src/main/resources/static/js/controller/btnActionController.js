@@ -84,6 +84,7 @@ async function addProductToCartEvtHandler(e) {
     const target = e.currentTarget;
     const prodId = target.dataset.productId;
     const response = await dataHandler.addProductToCart({"userName": "stiepan", "productId": prodId});
+    console.log(response)
     domManager.updateCartIconQuantity(response["productsCount"])
 }
 
