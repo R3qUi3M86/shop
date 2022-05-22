@@ -47,6 +47,7 @@ public class CheckoutPageController {
         Optional<Order> order = orderService.getUserOrder(userName);
         if (bindingResult.hasErrors()) {
 //            bindingResult.getFieldErrors().forEach(e -> billingDetails.removeRejectedValue(e.getRejectedValue()));
+            model.addAttribute("validation", "was-validated");
             return checkout(model, billingDetails);
         } else {
             if (order.isPresent()) {

@@ -30,3 +30,6 @@ INSERT INTO public.product(default_currency, default_price, description, name, c
 VALUES ('USD',111,'wow','Amazon Laptop',2,1);
 INSERT INTO public.product(default_currency, default_price, description, name, category_id, supplier_id)
 VALUES ('USD',456.1,'Even Better','Amazon Phone',3,1);
+
+INSERT INTO public.user(email, password, user_name)
+VALUES ('stiepan','spiepan@yahoo.com', 'qwe');
